@@ -1,0 +1,5 @@
+<Page ux:Class="Nav_Tab">
+    <string ux:Property="icon" />
+    <FileImageSource ux:Key="Icon" File="{Property icon}" />
+    <Rectangle />
+</Page>

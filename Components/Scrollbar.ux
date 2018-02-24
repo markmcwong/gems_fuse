@@ -1,0 +1,8 @@
+	
+<ScrollView AllowedScrollDirections="Horizontal" ux:Class="Scrollbar">		
+    <StackPanel Orientation="Horizontal">
+        <Each Items="{profiles}">
+            <Scrollbar_Buttons Padding="10"/>
+        </Each>
+    </StackPanel>
+</ScrollView>

@@ -1,0 +1,10 @@
+<Button ux:Class="Scrollbar_Buttons" Height="100%">
+    <Router ux:Name="router" />
+    <Clicked>
+        <Callback Handler="{option_clicked}"/>
+    </Clicked>
+    <Panel>
+        <Text Value="{name}" Color="#FFF" Alignment="Center" Margin="15,8,15,8" TextAlignment="Center" FontSize="16"/>
+        <Rectangle CornerRadius="4" Layer="Background" Color="{colour}"/>
+    </Panel>
+</Button>

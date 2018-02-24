@@ -1,0 +1,94 @@
+<App Background="#FFFFFF">
+	<Router ux:Name="router" />
+	
+	<iOS.StatusBarConfig Style="Dark" Animation="Slide" IsVisible="True" />
+	<Android.StatusBarConfig Color="#000" />
+	
+	<!-- <Android.StatusBarConfig Color="#0003" IsVisible="True"/>	 -->
+	<DockPanel>
+		<StatusBarBackground Dock="Top" />
+		<BottomBarBackground Dock="Bottom"/>
+		<Topbar Dock="Top"/>
+		<Navigator DefaultPath="Profile">
+			<Page ux:Name="Profile">
+				<PageControl ux:Name="pages" Padding="0,5" Background="#FFF">
+					<Nav_Tab icon="Assets/icon-profile.png">
+						<StackPanel Orientation="Vertical">
+							<Scrollbar/>
+						</StackPanel>
+					</Nav_Tab>
+					<Nav_Tab icon="Assets/icon-bell.png"/>
+					<Nav_Tab icon="Assets/icon-book.png"/>
+					<Nav_Tab icon="Assets/icon-settings.png"/>											
+				</PageControl>
+			</Page>
+			<Page ux:Name="Calendar_Page" Background="#FFF" Opacity="0">
+				<WhileActive>
+					<Change Calendar_Page.Opacity="1" Duration="1"/>
+				</WhileActive>
+			    <Transition>					
+					<Move Y="0.25" RelativeTo="ParentSize" Duration="0.5"/>
+				</Transition>
+				<Calendar Offset="0,10"/>
+			</Page>
+			<Page ux:Name="Homework_Page" Background="#FFF">
+			</Page>			
+			<Page ux:Name="Timetable_Page" Background="#FFF">
+			</Page>	
+		</Navigator>
+
+		<PageIndicator Dock="Bottom" Height="45" Navigation="pages">
+			<GridLayout ColumnCount="4" />
+			<Panel ux:Template="Dot" Height="45">
+				<!-- <ActivatingAnimation>
+					<Scale Target="icon" Factor="1.5" />
+				</ActivatingAnimation> -->
+				<Clicked>
+					<NavigateTo Target="{Page Visual}"/>
+				</Clicked>
+				<Panel ux:Name="icon" Padding="10">
+					<Image Source="{Page Icon}" />
+				</Panel>
+				<Rectangle Color="{Page Highlight}" />
+			</Panel>
+		</PageIndicator>
+
+	</DockPanel>
+	<JavaScript>
+		var Observable = require("FuseJS/Observable");
+		/*var pages = [
+			{"name":"page1", "highlight":"#34495e", "icon":"Assets/icon-profile.png"},
+			{"name":"page2", "highlight":"#3498db", "icon":"Assets/icon-bell.png"},
+			{"name":"page3", "highlight":"#aa3377", "icon":"Assets/icon-book.png"},
+			{"name":"page4", "highlight":"#88cc22", "icon":"Assets/icon-settings.png"}
+		];*/
+
+		var profiles = [
+			{"name":"Homework", "colour":"#34495e"},
+			{"name":"Calendar", "colour":"#3498db"},
+			{"name":"Timetable", "colour":"#aa3377"},
+			{"name":"Learning Space", "colour":"#88cc22"}
+		];
+		var topbar_title = Observable("Home")
+		var original = Observable("Home")
+        var option_clicked = function(args){
+			router.push(args.data.name+"_Page");
+			change_title(args.data.name)
+        }
+		var change_title = function(args){
+			if(args.node){
+				topbar_title.value = "Home"
+			}else{
+				topbar_title.value = args				
+			}
+		}
+		
+		module.exports = {
+			profiles: profiles,
+			option_clicked: option_clicked,
+			topbar_title: topbar_title,
+			change_title: change_title
+		};
+	
+	</JavaScript>
+</App>

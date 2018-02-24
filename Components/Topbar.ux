@@ -1,0 +1,24 @@
+<StackPanel ux:Class="Topbar" Dock="Top" Color="#333">
+    <Panel Height="56">
+        <StackPanel Orientation="Horizontal" Alignment="CenterLeft" Margin="0,16,16,16" ItemSpacing="4">
+            <WhileCanGoBack>
+                <Panel Width="40" Height="40" HitTestMode="LocalBounds" Alignment="CenterLeft">
+                    <Clicked>
+                        <GoBack/>
+                        <Callback Handler="{change_title}"/>
+                    </Clicked>
+                    <AddingAnimation>
+                        <Move X="-3" RelativeTo="Size" Duration="0.8" Easing="CubicIn" />
+                    </AddingAnimation>
+                    <RemovingAnimation>
+                        <Move X="-3" RelativeTo="Size" Duration="0.8" Easing="CubicOut" />
+                    </RemovingAnimation>
+                    <Image File="../Assets/icon-back.png" Alignment="Center" Height="60%" />
+                </Panel>
+            </WhileCanGoBack>
+
+        </StackPanel>
+        <Text Value="{topbar_title}" Alignment="Center" Color="#FFF" FontSize="20" />
+        <Image File="../Assets/icon-hexagon.png" Alignment="CenterRight" Margin="16" />
+    </Panel>
+</StackPanel>

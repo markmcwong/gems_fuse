@@ -1,0 +1,6 @@
+<Panel ux:Class="StaticResources">
+	<float4 ux:Global="BorderColor" ux:Value="#333" />
+		
+	<!-- <Text ux:Class="BaseText" Font="BaseFont" FontSize="14" Color="#222" />
+	<BaseText ux:Class="BoldText" Font="BoldFont" /> -->
+</Panel>
