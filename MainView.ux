@@ -8,36 +8,9 @@
 	<DockPanel>
 		<StatusBarBackground Dock="Top" />
 		<BottomBarBackground Dock="Bottom"/>
-		<Topbar Dock="Top"/>
-		<Navigator DefaultPath="Profile">
-			<Page ux:Name="Profile">
-				<PageControl ux:Name="pages" Padding="0,5" Background="#FFF">
-					<Nav_Tab icon="Assets/icon-profile.png">
-						<StackPanel Orientation="Vertical">
-							<Scrollbar/>
-						</StackPanel>
-					</Nav_Tab>
-					<Nav_Tab icon="Assets/icon-bell.png"/>
-					<Nav_Tab icon="Assets/icon-book.png"/>
-					<Nav_Tab icon="Assets/icon-settings.png"/>											
-				</PageControl>
-			</Page>
-			<Page ux:Name="Calendar_Page" Background="#FFF" Opacity="0">
-				<WhileActive>
-					<Change Calendar_Page.Opacity="1" Duration="1"/>
-				</WhileActive>
-			    <Transition>					
-					<Move Y="0.25" RelativeTo="ParentSize" Duration="0.5"/>
-				</Transition>
-				<Calendar Offset="0,10"/>
-			</Page>
-			<Page ux:Name="Homework_Page" Background="#FFF">
-			</Page>			
-			<Page ux:Name="Timetable_Page" Background="#FFF">
-			</Page>	
-		</Navigator>
+		<Topbar Dock="Top"/>	
 
-		<PageIndicator Dock="Bottom" Height="45" Navigation="pages">
+		<PageIndicator Dock="Bottom" Height="45" Navigation="pages" Background="#000">
 			<GridLayout ColumnCount="4" />
 			<Panel ux:Template="Dot" Height="45">
 				<!-- <ActivatingAnimation>
@@ -52,7 +25,25 @@
 				<Rectangle Color="{Page Highlight}" />
 			</Panel>
 		</PageIndicator>
-
+		<Navigator DefaultPath="Profile">
+			<Page ux:Name="Profile">
+				<PageControl ux:Name="pages" Padding="0,5" Background="#FFF">
+					<Nav_Tab icon="Assets/icon-profile.png">
+						<StackPanel Orientation="Vertical">
+							<Scrollbar/>
+						</StackPanel>
+					</Nav_Tab>
+					<Nav_Tab icon="Assets/icon-bell.png"/>
+					<Nav_Tab icon="Assets/icon-book.png"/>
+					<Nav_Tab icon="Assets/icon-settings.png"/>											
+				</PageControl>
+			</Page>
+			<Calendar_Page ux:Name="Calendar_Page"/>
+			<Page ux:Name="Homework_Page" Background="#FFF">
+			</Page>			
+			<Page ux:Name="Timetable_Page" Background="#FFF">
+			</Page>	
+		</Navigator>
 	</DockPanel>
 	<JavaScript>
 		var Observable = require("FuseJS/Observable");

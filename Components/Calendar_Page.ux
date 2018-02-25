@@ -1,0 +1,26 @@
+<Page ux:Class="Calendar_Page" Background="#FFF" Opacity="0">
+    <WhileActive>
+        <Change this.Opacity="1" Duration="1"/>
+    </WhileActive>
+    <Transition>					
+        <Move Y="0.25" RelativeTo="ParentSize" Duration="0.5"/>
+    </Transition>
+    <StackPanel Orientation="Vertical">
+        <Calendar Offset="0,10"/>
+        <StackPanel Padding="25,10">
+            <Grid Columns="auto,1*" Padding="-7.5,10,0,-10">
+                <Button Height="100%">
+                    <Rectangle ux:Name="a" CornerRadius="20" Layer="Background" Color="#E8E8E8"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Rectangle CornerRadius="20" Color="#ffa500" Height="100%" Width="height(a)">
+                            <Text Value="2" Alignment="Center" TextColor="#FFF"/>
+                        </Rectangle>
+                        <Text Value="Events" Color="#708090" Alignment="Center" Margin="10,8,15,8" TextAlignment="Center" FontSize="16"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+            <Calendar_List_Item/>
+            <Calendar_List_Item/>
+        </StackPanel>
+    </StackPanel>
+</Page>

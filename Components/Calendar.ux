@@ -5,13 +5,13 @@
         <Match Value="{= ReadProperty Text}">
             <Case String="3">
                 <Text Dock="Top" Value="{= ReadProperty Text}" TextAlignment="Right" Alignment="Center" TextColor="#FFF" Padding="0,10,0,10"/>
-                <Circle Width="30" Height="30" Layer="Background" Fill="#0F0F0F" Offset="0,-10"/>
+                <Circle Width="30" Height="30" Layer="Background" Fill="#ffa500" Offset="0,-10"/>
             </Case>
             <Case String="1000" IsDefault="true">
                 <Text Dock="Top" Value="{= ReadProperty Text}" TextAlignment="Right" Alignment="Center" TextColor="#0F0F0F" Padding="0,10,0,10"/>
             </Case>
         </Match>
-        <Rectangle Color="#0f0f0f" Height="1"/>
+        <Rectangle Color="#D3D3D3" Height="1"/>
     </DockPanel>
     <Each Count="31" Offset="1">
         <Date Text="{= index()}"/>
