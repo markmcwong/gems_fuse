@@ -1,0 +1,14 @@
+.uno/CodeCompletion/ux14/HidingPanel.g.uno
+.uno/CodeCompletion/ux14/MainView.g.uno
+.uno/CodeCompletion/ux14/MyPlot.g.uno
+.uno/CodeCompletion/ux14/StaticResources.g.uno
+.uno/CodeCompletion/ux14/Calendar.g.uno
+.uno/CodeCompletion/ux14/Date.g.uno
+.uno/CodeCompletion/ux14/Calendar_List_Item.g.uno
+.uno/CodeCompletion/ux14/HardShadow.g.uno
+.uno/CodeCompletion/ux14/Calendar_Page.g.uno
+.uno/CodeCompletion/ux14/Scrollbar.g.uno
+.uno/CodeCompletion/ux14/Scrollbar_Buttons.g.uno
+.uno/CodeCompletion/ux14/Nav_Tab.g.uno
+.uno/CodeCompletion/ux14/Topbar.g.uno
+.uno/CodeCompletion/ux14/Gems.unoproj.g.uno
