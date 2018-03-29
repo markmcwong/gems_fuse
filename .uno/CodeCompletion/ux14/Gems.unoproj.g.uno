@@ -18,16 +18,6 @@ sealed class Gems_accessor_MyPlot_SeriesIndex: global::Uno.UX.PropertyAccessor
     public override void SetAsObject(global::Uno.UX.PropertyObject obj, object v, global::Uno.UX.IPropertyListener origin) { ((global::MyPlot)obj).SetSeriesIndex((int)v, origin); }
     public override bool SupportsOriginSetter { get { return true; } }
 }
-sealed class Gems_accessor_MyPlot_BackgroundColor: global::Uno.UX.PropertyAccessor
-{
-    public static global::Uno.UX.PropertyAccessor Singleton = new Gems_accessor_MyPlot_BackgroundColor();
-    public override global::Uno.UX.Selector Name { get { return _name; } }
-    static global::Uno.UX.Selector _name = "BackgroundColor";
-    public override global::Uno.Type PropertyType { get { return typeof(float4); } }
-    public override object GetAsObject(global::Uno.UX.PropertyObject obj) { return ((global::MyPlot)obj).BackgroundColor; }
-    public override void SetAsObject(global::Uno.UX.PropertyObject obj, object v, global::Uno.UX.IPropertyListener origin) { ((global::MyPlot)obj).SetBackgroundColor((float4)v, origin); }
-    public override bool SupportsOriginSetter { get { return true; } }
-}
 sealed class Gems_accessor_Date_Text: global::Uno.UX.PropertyAccessor
 {
     public static global::Uno.UX.PropertyAccessor Singleton = new Gems_accessor_Date_Text();
@@ -132,15 +122,6 @@ sealed class Gems_FuseChartingPlotData_SeriesIndex_Property: Uno.UX.Property<int
     public override int Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Charting.PlotData)obj).SeriesIndex; }
     public override void Set(global::Uno.UX.PropertyObject obj, int v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Charting.PlotData)obj).SeriesIndex = v; }
 }
-sealed class Gems_FuseDrawingSolidColor_Color_Property: Uno.UX.Property<float4>
-{
-    [Uno.WeakReference] readonly Fuse.Drawing.SolidColor _obj;
-    public Gems_FuseDrawingSolidColor_Color_Property(Fuse.Drawing.SolidColor obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
-    public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
-    public override float4 Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Drawing.SolidColor)obj).Color; }
-    public override void Set(global::Uno.UX.PropertyObject obj, float4 v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Drawing.SolidColor)obj).SetColor(v, origin); }
-    public override bool SupportsOriginSetter { get { return true; } }
-}
 sealed class Gems_FuseChartingDataSeries_Data_Property: Uno.UX.Property<Fuse.IArray>
 {
     [Uno.WeakReference] readonly Fuse.Charting.DataSeries _obj;
@@ -213,6 +194,15 @@ sealed class Gems_FuseTriggersWhileBool_Value_Property: Uno.UX.Property<bool>
     public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
     public override bool Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Triggers.WhileBool)obj).Value; }
     public override void Set(global::Uno.UX.PropertyObject obj, bool v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Triggers.WhileBool)obj).Value = v; }
+}
+sealed class Gems_FuseControlsPanel_Color_Property: Uno.UX.Property<float4>
+{
+    [Uno.WeakReference] readonly Fuse.Controls.Panel _obj;
+    public Gems_FuseControlsPanel_Color_Property(Fuse.Controls.Panel obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
+    public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
+    public override float4 Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Controls.Panel)obj).Color; }
+    public override void Set(global::Uno.UX.PropertyObject obj, float4 v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Controls.Panel)obj).SetColor(v, origin); }
+    public override bool SupportsOriginSetter { get { return true; } }
 }
 sealed class Gems_FuseReactiveMatch_Value_Property: Uno.UX.Property<object>
 {

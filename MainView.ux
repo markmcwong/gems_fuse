@@ -104,65 +104,71 @@
 									<Nav_Tab icon="Assets/icon-book.png"/>
 									<Nav_Tab icon="Assets/icon-settings.png"/>											
 								</PageControl>
-								<Panel Background="#FFFFFF" Width="85%">
-								<Panel xmlns:c="Fuse.Charting" Height="150">	
-									<JavaScript>
-										var Observable = require("FuseJS/Observable")
+								<Panel Width="90%" Margin="0,15,0,0">
+									<Grid Columns="150, 1*">
+										<Text Value="Weekly report" Margin="15"/>
+										<Button/>
+									</Grid>
+									<Panel xmlns:c="Fuse.Charting" Height="200" Padding="10">	
+										<JavaScript>
+											var Observable = require("FuseJS/Observable")
 
-										function Item( value, label ) {
-											this.value = value
-											this.label = label
-										}
-										var values1 = Observable(
-											new Item(7, "S"),
-											new Item(20, "M"),
-											new Item(13, "T"),
-											new Item(27, "W"),
-											new Item(15, "T")
-										);
-										module.exports = {
-											values1: values1
-										}
-									</JavaScript>
-									<Panel ux:Class="MyPlot">
-										<int ux:Property="SeriesIndex" />
-										<float4 ux:Property="MainColor" />
-										<float4 ux:Property="BackgroundColor" />
-										<Panel Opacity="1">
-											<Curve StrokeWidth="2" StrokeColor="{ReadProperty MainColor}" Close="None">
+											function Item( value, label ) {
+												this.value = value
+												this.label = label
+											}
+											var values1 = Observable(
+												new Item(7, "S"),
+												new Item(20, "M"),
+												new Item(13, "T"),
+												new Item(27, "W"),
+												new Item(15, "T")
+											);
+											module.exports = {
+												values1: values1
+											}
+										</JavaScript>
+										<Panel ux:Class="MyPlot">
+											<int ux:Property="SeriesIndex" />
+											<float4 ux:Property="MainColor" />
+											<float4 ux:Property="BackgroundColor" />
+											<Panel Opacity="1">
+												<Curve StrokeWidth="2" StrokeColor="{ReadProperty MainColor}" Close="None">
+													<c:PlotData SeriesIndex="{ReadProperty SeriesIndex}">
+														<c:PlotCurvePoint />
+														<c:PlotPoint>
+															<Circle Color="{ReadProperty MainColor}" Width="6" Height="6">
+																<Stroke Width="2" Color="#202B33" Alignment="Outside" />
+															</Circle>
+														</c:PlotPoint>
+													</c:PlotData>
+												</Curve>
+												
+											</Panel>
+											<!-- <Curve Close="None" Extrude="Bottom">
+												<SolidColor Color="{ReadProperty BackgroundColor}" />
 												<c:PlotData SeriesIndex="{ReadProperty SeriesIndex}">
 													<c:PlotCurvePoint />
-													<c:PlotPoint>
-														<Circle Color="{ReadProperty MainColor}" Width="6" Height="6">
-															<Stroke Width="2" Color="#202B33" Alignment="Outside" />
-														</Circle>
-													</c:PlotPoint>
 												</c:PlotData>
-											</Curve>
-											
+											</Curve> -->
 										</Panel>
-										<!-- <Curve Close="None" Extrude="Bottom">
-											<SolidColor Color="{ReadProperty BackgroundColor}" />
-											<c:PlotData SeriesIndex="{ReadProperty SeriesIndex}">
-												<c:PlotCurvePoint />
-											</c:PlotData>
-										</Curve> -->
-									</Panel>
-									<c:Plot >
-										<c:DataSeries Data="{values1}" />
-										<GridLayout Rows="1*, 20" />
+										<c:Plot >
+											<c:DataSeries Data="{values1}" />
+											<GridLayout Rows="1*, 20" />
 
-										<MyPlot Row="0" MainColor="MainColor" BackgroundColor="MainColor" SeriesIndex="0" />
-										<Panel Row="1">
-											<c:PlotAxis Axis="X">
-												<Text ux:Template="Label" TextAlignment="Center" FontSize="15" 
-													Color="#000" Value="{Plot axis.label}"/>
-											</c:PlotAxis>	
-										</Panel> 
-									</c:Plot>
-									
-								</Panel>
-								<Shadow/>
+											<MyPlot Row="0" MainColor="MainColor" BackgroundColor="MainColor" SeriesIndex="0" />
+											<Panel Row="1">
+												<c:PlotAxis Axis="X">
+													<Text ux:Template="Label" TextAlignment="Center" FontSize="15" 
+														Color="#000" Value="{Plot axis.label}"/>
+												</c:PlotAxis>	
+											</Panel> 
+										</c:Plot>
+										
+									</Panel>
+									<Rectangle Color="#fff" CornerRadius="10">
+										<Shadow Size="10"/>
+									</Rectangle>
 								</Panel>
 							</StackPanel>
 						</Page>
@@ -178,18 +184,21 @@
 
 		<HidingPanel ux:Name="signupForm" Width="90%" Height="30%" Offset="0%,10%">
 			<Grid RowCount="2" Margin="30,40,30,60">
-				<TextInput ux:Name="usernameTI" PlaceholderText="Username" Opacity="1" Alignment="VerticalCenter" PlaceholderColor="#fff"><Rectangle Alignment="Bottom" Height="1" Layer="Background">
-            <Stroke Width="0.5" Brush="#BBB" />
-        </Rectangle></TextInput>
-				<TextInput ux:Name="passwordTI" PlaceholderText="Password" Opacity="1" Alignment="VerticalCenter" PlaceholderColor="#e1e1e1" ><Rectangle Alignment="Bottom" Height="1" Layer="Background">
-            <Stroke Width="0.5" Brush="#BBB" />
-        </Rectangle></TextInput>
+				<TextInput ux:Name="usernameTI" PlaceholderText="Username" Opacity="1" Alignment="VerticalCenter" PlaceholderColor="#bbb" TextColor="#fff" CaretColor="#fff">
+					<Rectangle Alignment="Bottom" Height="1" Layer="Background" Margin="0,25,0,0">
+            			<Stroke Width="0.5" Brush="#FFF" />
+        			</Rectangle>
+				</TextInput>
+				<TextInput ux:Name="passwordTI" PlaceholderText="Password" Opacity="1" Alignment="VerticalCenter" PlaceholderColor="#bbb" TextColor="#fff" CaretColor="#fff">
+					<Rectangle  Margin="0,25,0,0" Alignment="Bottom" Height="1" Layer="Background">
+            			<Stroke Width="0.5" Brush="#FFF" />
+       				</Rectangle>
+				</TextInput>
 			</Grid>
 			<WhileEnabled>
 				<Change usernameTI.Opacity="1" Duration="0.4" />
 				<Change passwordTI.Opacity="1" Duration="0.4" Delay="0.3" />
 			</WhileEnabled>
-			
 			<Panel Layer="Overlay">
 				<Panel ux:Name="submitButton" Width="100" Offset="0%,50%" Height="50" HitTestMode="LocalBoundsAndChildren">
 					<Text Value="DONE" Alignment="Center" Color="White" />
@@ -249,8 +258,8 @@
 			</Rectangle>
 		</Panel>
 
-		<Rectangle ux:Name="whiteRect" Color="MainColor" LayoutMaster="{clicked}" Layer="Background" CornerRadius="25"><DropShadow/></Rectangle>
-		<Attractor ux:Name="whiteRectCornerRadiusAttractor" Target="whiteRect.CornerRadius" Value="25" Type="SmoothSnap" Unit="Points" />
+		<Rectangle ux:Name="whiteRect" Color="MainColor" LayoutMaster="{clicked}" Layer="Background" CornerRadius="10"><DropShadow/></Rectangle>
+		<Attractor ux:Name="whiteRectCornerRadiusAttractor" Target="whiteRect.CornerRadius" Value="10" Type="SmoothSnap" Unit="Points" />
 
 		<HidingPanel ux:Name="logoPanel" Alignment="Top" Height="70%" IsEnabled="true" HitTestMode="None" Layer="Background">
 			<StackPanel Alignment="Center">
