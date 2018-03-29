@@ -2,7 +2,7 @@
 	<Router ux:Name="router" />
 	
 	<iOS.StatusBarConfig Style="Dark" Animation="Slide" IsVisible="True" />
-	<Android.StatusBarConfig Color="#000" />
+	<Android.StatusBarConfig Color="MainColor" />
 	<JavaScript>
 		var Observable = require("FuseJS/Observable");
 		var clicked = Observable("signupButton");
@@ -98,78 +98,81 @@
 									<Nav_Tab icon="Assets/icon-profile.png">
 										<StackPanel Orientation="Vertical">
 											<Scrollbar/>
+											<Panel Width="90%" Margin="0,15,0,0">
+												<Grid Columns="150, 1*">
+													<Text Value="Weekly report" Margin="15"/>
+													<Panel HitTestMode="LocalBoundsAndChildren" Alignment="TopRight" Margin="15">
+														<Image File="Icons/Dashboard_Arrow.png" Width="15" Height="15" />
+													</Panel>
+												</Grid>
+												<Panel xmlns:c="Fuse.Charting" Height="200" Margin="10,20,10,15">	
+													<JavaScript>
+														var Observable = require("FuseJS/Observable")
+
+														function Item( value, label ) {
+															this.value = value
+															this.label = label
+														}
+														var values1 = Observable(
+															new Item(7, "S"),
+															new Item(20, "M"),
+															new Item(13, "T"),
+															new Item(27, "W"),
+															new Item(15, "T")
+														);
+														module.exports = {
+															values1: values1
+														}
+													</JavaScript>
+													<Panel ux:Class="MyPlot">
+														<int ux:Property="SeriesIndex" />
+														<float4 ux:Property="MainColor" />
+														<float4 ux:Property="BackgroundColor" />
+														<Panel Opacity="1">
+															<Curve StrokeWidth="2" StrokeColor="{ReadProperty MainColor}" Close="None">
+																<c:PlotData SeriesIndex="{ReadProperty SeriesIndex}">
+																	<c:PlotCurvePoint />
+																	<c:PlotPoint>
+																		<Circle Color="{ReadProperty MainColor}" Width="6" Height="6">
+																			<Stroke Width="2" Color="#202B33" Alignment="Outside" />
+																		</Circle>
+																	</c:PlotPoint>
+																</c:PlotData>
+															</Curve>
+															
+														</Panel>
+														<!-- <Curve Close="None" Extrude="Bottom">
+															<SolidColor Color="{ReadProperty BackgroundColor}" />
+															<c:PlotData SeriesIndex="{ReadProperty SeriesIndex}">
+																<c:PlotCurvePoint />
+															</c:PlotData>
+														</Curve> -->
+													</Panel>
+													<c:Plot >
+														<c:DataSeries Data="{values1}" />
+														<GridLayout Rows="1*, 20" />
+
+														<MyPlot Row="0" MainColor="MainColor" BackgroundColor="MainColor" SeriesIndex="0" />
+														<StackPanel Row="1" Margin="0, -20">
+															<c:PlotAxis Axis="X">
+																<Text ux:Template="Label" TextAlignment="Center" FontSize="15" 
+																	Color="#000" Value="{Plot axis.label}"/>
+															</c:PlotAxis>	
+															<Text Value="10 event in next 5 days" FontSize="14" Margin="5,10"/>
+														</StackPanel> 
+													</c:Plot>
+													
+												</Panel>
+												<Rectangle Color="#fff" CornerRadius="10">
+													<Shadow Size="10"/>
+												</Rectangle>
+											</Panel>
 										</StackPanel>
 									</Nav_Tab>
 									<Nav_Tab icon="Assets/icon-bell.png"/>
 									<Nav_Tab icon="Assets/icon-book.png"/>
 									<Nav_Tab icon="Assets/icon-settings.png"/>											
 								</PageControl>
-								<Panel Width="90%" Margin="0,15,0,0">
-									<Grid Columns="150, 1*">
-										<Text Value="Weekly report" Margin="15"/>
-										<Button/>
-									</Grid>
-									<Panel xmlns:c="Fuse.Charting" Height="200" Padding="10">	
-										<JavaScript>
-											var Observable = require("FuseJS/Observable")
-
-											function Item( value, label ) {
-												this.value = value
-												this.label = label
-											}
-											var values1 = Observable(
-												new Item(7, "S"),
-												new Item(20, "M"),
-												new Item(13, "T"),
-												new Item(27, "W"),
-												new Item(15, "T")
-											);
-											module.exports = {
-												values1: values1
-											}
-										</JavaScript>
-										<Panel ux:Class="MyPlot">
-											<int ux:Property="SeriesIndex" />
-											<float4 ux:Property="MainColor" />
-											<float4 ux:Property="BackgroundColor" />
-											<Panel Opacity="1">
-												<Curve StrokeWidth="2" StrokeColor="{ReadProperty MainColor}" Close="None">
-													<c:PlotData SeriesIndex="{ReadProperty SeriesIndex}">
-														<c:PlotCurvePoint />
-														<c:PlotPoint>
-															<Circle Color="{ReadProperty MainColor}" Width="6" Height="6">
-																<Stroke Width="2" Color="#202B33" Alignment="Outside" />
-															</Circle>
-														</c:PlotPoint>
-													</c:PlotData>
-												</Curve>
-												
-											</Panel>
-											<!-- <Curve Close="None" Extrude="Bottom">
-												<SolidColor Color="{ReadProperty BackgroundColor}" />
-												<c:PlotData SeriesIndex="{ReadProperty SeriesIndex}">
-													<c:PlotCurvePoint />
-												</c:PlotData>
-											</Curve> -->
-										</Panel>
-										<c:Plot >
-											<c:DataSeries Data="{values1}" />
-											<GridLayout Rows="1*, 20" />
-
-											<MyPlot Row="0" MainColor="MainColor" BackgroundColor="MainColor" SeriesIndex="0" />
-											<Panel Row="1">
-												<c:PlotAxis Axis="X">
-													<Text ux:Template="Label" TextAlignment="Center" FontSize="15" 
-														Color="#000" Value="{Plot axis.label}"/>
-												</c:PlotAxis>	
-											</Panel> 
-										</c:Plot>
-										
-									</Panel>
-									<Rectangle Color="#fff" CornerRadius="10">
-										<Shadow Size="10"/>
-									</Rectangle>
-								</Panel>
 							</StackPanel>
 						</Page>
 						<Calendar_Page ux:Name="Calendar_Page"/>
