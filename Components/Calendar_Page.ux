@@ -2,10 +2,11 @@
     <WhileActive>
         <Change this.Opacity="1" Duration="1"/>
     </WhileActive>
-    <Transition>					
+    <!-- <Transition>					
         <Move Y="0.25" RelativeTo="ParentSize" Duration="0.5"/>
-    </Transition>
+    </Transition> -->
     <StackPanel Orientation="Vertical">
+        <Week/>
         <Calendar Offset="0,10"/>
         <StackPanel Padding="25,10">
             <Grid Columns="auto,1*" Padding="-7.5,10,0,-10">

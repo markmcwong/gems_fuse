@@ -1,0 +1,27 @@
+<Grid ux:Class="Dashboard_Item" Columns="auto, 1*, 2*, 8*, 2*" Margin="0,-5">
+    <string ux:Property="first_child"/>
+    <Text TextAlignment="Center" Alignment="Bottom" Margin="30,35,10,0" FontSize="18" Color="#50B3C2">Mar 3.</Text>
+
+    <Rectangle Offset="10%,-5%">
+        <Circle Alignment="Bottom" Width="15" Height="15" Color="#ffa500">
+            <HardShadow Distance="3" />
+        </Circle>
+        <Rectangle Width="2" Color="#D3D3D3" Height="{Property first_child}" Alignment="Bottom"/>
+    </Rectangle>
+    <Image File="../Icons/physics.png" Alignment="Center" Height="40%" Offset="5,35%" Margin="5,0" />
+    <StackPanel Margin="15,30,0,0" Offset="0,30%">
+        <Text FontSize="18">Physics</Text>
+        <Text Color="#50B3C2">Exam</Text>
+    </StackPanel>
+    <ToggleControl ux:Class="CheckBox" BoxSizing="FillAspect" Aspect="1" Margin="2" HitTestMode="LocalBounds" Width="48" Height="40%">
+        <Image File="../Icons/check.png" Color="#FFF" Margin="4" ux:Name="_toggledBox" Opacity="0" />
+        <WhileTrue Value="{ReadProperty this.Value}">
+            <Change _toggledBox.Opacity="1" Duration="0.15" Easing="CubicOut" EasingBack="CubicIn" />
+        </WhileTrue>
+        <Rectangle Layer="Background" Color="#50E3C2" CornerRadius="5"/>
+        <Clicked>
+            <Toggle Target="this" />
+        </Clicked>
+    </ToggleControl>
+    <CheckBox Offset="-50%,35%"/>
+</Grid>

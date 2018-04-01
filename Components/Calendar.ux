@@ -1,19 +1,31 @@
-<Panel ux:Class="Calendar">
+<Panel ux:Class="Week">
+    <JavaScript>
+        module.exports = {
+            Week: [
+                { Weekday: "S"},
+                { Weekday: "M"},
+                { Weekday: "T"},
+                { Weekday: "W"},
+                { Weekday: "T"},
+                { Weekday: "F"},
+                { Weekday: "S"},
+            ]
+        };
+    </JavaScript>
     <ColumnLayout ColumnCount="7"/>
-    <DockPanel ux:Class="Date" Padding="0,10,0,10">
+    <DockPanel ux:Class="Week_TopBar" Padding="0,0,0,0" Color="MainColor">
         <string ux:Property="Text" />
         <Match Value="{= ReadProperty Text}">
-            <Case String="3">
-                <Text Dock="Top" Value="{= ReadProperty Text}" TextAlignment="Right" Alignment="Center" TextColor="#FFF" Padding="0,10,0,10"/>
-                <Circle Width="30" Height="30" Layer="Background" Fill="#ffa500" Offset="0,-10"/>
+            <Case String="W">
+                <Text Dock="Top" Value="{= ReadProperty Text}" TextAlignment="Right" Alignment="Center" TextColor="#fff" Padding="0,10,0,10"/>
+                <Rectangle Width="30" Layer="Background" Height="5" Fill="#ffa500" Offset="0,10" CornerRadius="15"/>
             </Case>
             <Case String="1000" IsDefault="true">
-                <Text Dock="Top" Value="{= ReadProperty Text}" TextAlignment="Right" Alignment="Center" TextColor="#0F0F0F" Padding="0,10,0,10"/>
+                <Text Dock="Top" Value="{= ReadProperty Text}" TextAlignment="Right" Alignment="Center" TextColor="#fff" Padding="0,10,0,10"/>
             </Case>
         </Match>
-        <Rectangle Color="#D3D3D3" Height="1"/>
     </DockPanel>
-    <Each Count="31" Offset="1">
-        <Date Text="{= index()}"/>
+    <Each Items="{Week}">
+        <Week_TopBar Text="{Weekday}"/>
     </Each>
 </Panel>

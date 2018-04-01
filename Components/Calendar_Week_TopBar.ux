@@ -1,0 +1,19 @@
+<Panel ux:Class="Calendar">
+    <ColumnLayout ColumnCount="7"/>
+    <DockPanel ux:Class="Date" Padding="0,10,0,10">
+        <string ux:Property="Text" />
+        <Match Value="{= ReadProperty Text}">
+            <Case String="3">
+                <Text Dock="Top" Value="{= ReadProperty Text}" TextAlignment="Right" Alignment="Center" TextColor="#FFF" Padding="0,10,0,10"/>
+                <Circle Width="30" Height="30" Layer="Background" Fill="#ffa500" Offset="0,-10"/>
+            </Case>
+            <Case String="1000" IsDefault="true">
+                <Text Dock="Top" Value="{= ReadProperty Text}" TextAlignment="Right" Alignment="Center" TextColor="#0F0F0F" Padding="0,10,0,10"/>
+            </Case>
+        </Match>
+        <Rectangle Color="#D3D3D3" Height="1"/>
+    </DockPanel>
+    <Each Count="31" Offset="1">
+        <Date Text="{= index()}"/>
+    </Each>
+</Panel>

@@ -7,6 +7,10 @@
 .uno/CodeCompletion/ux14/Calendar_List_Item.g.uno
 .uno/CodeCompletion/ux14/HardShadow.g.uno
 .uno/CodeCompletion/ux14/Calendar_Page.g.uno
+.uno/CodeCompletion/ux14/Week.g.uno
+.uno/CodeCompletion/ux14/Week_TopBar.g.uno
+.uno/CodeCompletion/ux14/Dashboard_Item.g.uno
+.uno/CodeCompletion/ux14/CheckBox.g.uno
 .uno/CodeCompletion/ux14/Scrollbar.g.uno
 .uno/CodeCompletion/ux14/Scrollbar_Buttons.g.uno
 .uno/CodeCompletion/ux14/Nav_Tab.g.uno

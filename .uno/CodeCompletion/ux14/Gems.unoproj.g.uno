@@ -28,6 +28,36 @@ sealed class Gems_accessor_Date_Text: global::Uno.UX.PropertyAccessor
     public override void SetAsObject(global::Uno.UX.PropertyObject obj, object v, global::Uno.UX.IPropertyListener origin) { ((global::Date)obj).SetText((string)v, origin); }
     public override bool SupportsOriginSetter { get { return true; } }
 }
+sealed class Gems_accessor_Week_TopBar_Text: global::Uno.UX.PropertyAccessor
+{
+    public static global::Uno.UX.PropertyAccessor Singleton = new Gems_accessor_Week_TopBar_Text();
+    public override global::Uno.UX.Selector Name { get { return _name; } }
+    static global::Uno.UX.Selector _name = "Text";
+    public override global::Uno.Type PropertyType { get { return typeof(string); } }
+    public override object GetAsObject(global::Uno.UX.PropertyObject obj) { return ((global::Week_TopBar)obj).Text; }
+    public override void SetAsObject(global::Uno.UX.PropertyObject obj, object v, global::Uno.UX.IPropertyListener origin) { ((global::Week_TopBar)obj).SetText((string)v, origin); }
+    public override bool SupportsOriginSetter { get { return true; } }
+}
+sealed class Gems_accessor_Dashboard_Item_first_child: global::Uno.UX.PropertyAccessor
+{
+    public static global::Uno.UX.PropertyAccessor Singleton = new Gems_accessor_Dashboard_Item_first_child();
+    public override global::Uno.UX.Selector Name { get { return _name; } }
+    static global::Uno.UX.Selector _name = "first_child";
+    public override global::Uno.Type PropertyType { get { return typeof(string); } }
+    public override object GetAsObject(global::Uno.UX.PropertyObject obj) { return ((global::Dashboard_Item)obj).first_child; }
+    public override void SetAsObject(global::Uno.UX.PropertyObject obj, object v, global::Uno.UX.IPropertyListener origin) { ((global::Dashboard_Item)obj).Setfirst_child((string)v, origin); }
+    public override bool SupportsOriginSetter { get { return true; } }
+}
+sealed class Gems_accessor_Fuse_Controls_ToggleControl_Value: global::Uno.UX.PropertyAccessor
+{
+    public static global::Uno.UX.PropertyAccessor Singleton = new Gems_accessor_Fuse_Controls_ToggleControl_Value();
+    public override global::Uno.UX.Selector Name { get { return _name; } }
+    static global::Uno.UX.Selector _name = "Value";
+    public override global::Uno.Type PropertyType { get { return typeof(bool); } }
+    public override object GetAsObject(global::Uno.UX.PropertyObject obj) { return ((global::Fuse.Controls.ToggleControl)obj).Value; }
+    public override void SetAsObject(global::Uno.UX.PropertyObject obj, object v, global::Uno.UX.IPropertyListener origin) { ((global::Fuse.Controls.ToggleControl)obj).SetValue((bool)v, origin); }
+    public override bool SupportsOriginSetter { get { return true; } }
+}
 sealed class Gems_accessor_Nav_Tab_icon: global::Uno.UX.PropertyAccessor
 {
     public static global::Uno.UX.PropertyAccessor Singleton = new Gems_accessor_Nav_Tab_icon();
@@ -130,6 +160,14 @@ sealed class Gems_FuseChartingDataSeries_Data_Property: Uno.UX.Property<Fuse.IAr
     public override Fuse.IArray Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Charting.DataSeries)obj).Data; }
     public override void Set(global::Uno.UX.PropertyObject obj, Fuse.IArray v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Charting.DataSeries)obj).Data = v; }
 }
+sealed class Gems_FuseVisual_ZOffset_Property: Uno.UX.Property<float>
+{
+    [Uno.WeakReference] readonly Fuse.Visual _obj;
+    public Gems_FuseVisual_ZOffset_Property(Fuse.Visual obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
+    public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
+    public override float Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Visual)obj).ZOffset; }
+    public override void Set(global::Uno.UX.PropertyObject obj, float v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Visual)obj).ZOffset = v; }
+}
 sealed class Gems_FuseElementsElement_ElementLayoutMaster_Property: Uno.UX.Property<Fuse.Elements.Element>
 {
     [Uno.WeakReference] readonly Fuse.Elements.Element _obj;
@@ -228,6 +266,23 @@ sealed class Gems_FuseElementsElement_Width_Property: Uno.UX.Property<Uno.UX.Siz
     public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
     public override Uno.UX.Size Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Elements.Element)obj).Width; }
     public override void Set(global::Uno.UX.PropertyObject obj, Uno.UX.Size v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Elements.Element)obj).Width = v; }
+}
+sealed class Gems_Week_TopBar_Text_Property: Uno.UX.Property<string>
+{
+    [Uno.WeakReference] readonly Week_TopBar _obj;
+    public Gems_Week_TopBar_Text_Property(Week_TopBar obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
+    public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
+    public override string Get(global::Uno.UX.PropertyObject obj) { return ((Week_TopBar)obj).Text; }
+    public override void Set(global::Uno.UX.PropertyObject obj, string v, global::Uno.UX.IPropertyListener origin) { ((Week_TopBar)obj).SetText(v, origin); }
+    public override bool SupportsOriginSetter { get { return true; } }
+}
+sealed class Gems_FuseElementsElement_Height_Property: Uno.UX.Property<Uno.UX.Size>
+{
+    [Uno.WeakReference] readonly Fuse.Elements.Element _obj;
+    public Gems_FuseElementsElement_Height_Property(Fuse.Elements.Element obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
+    public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
+    public override Uno.UX.Size Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Elements.Element)obj).Height; }
+    public override void Set(global::Uno.UX.PropertyObject obj, Uno.UX.Size v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Elements.Element)obj).Height = v; }
 }
 sealed class Gems_FuseReactiveEach_Items_Property: Uno.UX.Property<object>
 {

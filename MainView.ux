@@ -24,7 +24,9 @@
 		var change_title = function(args){
 			if(args.node){
 				topbar_title.value = "Home"
-			}else{
+			}else if(args == "Calendar"){
+				topbar_title.value = "March 2018"				
+			}else {
 				topbar_title.value = args				
 			}
 		}
@@ -100,11 +102,11 @@
 						</PageControl>
 						<Page ux:Name="Profile">
 								<Grid Rows="auto, 1*">
-									<StackPanel Orientation="Vertical" >
+									<StackPanel Orientation="Vertical" ux:Name="Card">
 										<Scrollbar/>
 										<Panel Width="90%" Margin="0,5,0,0">
 											<Grid Columns="150, 1*">
-												<Text Value="Weekly report" Margin="15"/>
+												<Text Value="Weekly report" FontSize="16" Margin="15"/>
 												<Panel HitTestMode="LocalBoundsAndChildren" Alignment="TopRight" Margin="15">
 													<Image File="Icons/Dashboard_Arrow.png" Width="15" Height="15" />
 												</Panel>
@@ -167,15 +169,25 @@
 												</c:Plot>
 												
 											</Panel>
-											<Rectangle Color="#fff" CornerRadius="10">
-												<Shadow Size="10"/>
+											<Rectangle Color="#fff" CornerRadius="5">
+												<Shadow Size="5" Distance="0"/>
 											</Rectangle>
 										</Panel>
 									</StackPanel>
-									<Panel Height="100%" Margin="0,15,0,0">
-										<Rectangle Color="#fff" Width="100%" Height="100%"/>
+									<DockPanel Height="150%" Margin="0,15,0,0" ux:Name="swipePanel" Offset="0,25%">
+										<Rectangle Dock="Top" Fill="#D3D3D3" CornerRadius="20" Height="5" Width="10%" Margin="0,15"/>
+										<StackPanel Orientation="Vertical" Dock="Top" Alignment="Top" Margin="0,-25">
+											<Dashboard_Item first_child="50%"/>
+											<Dashboard_Item first_child="100%"/>
+										</StackPanel>
+										<Rectangle Color="#fff" Width="100%" Height="100%" Layer="Background"/>
 										<DropShadow Size="10"/>
-									</Panel>
+										<SwipeGesture ux:Name="swipe" Direction="Up" Length="50" Type="Active"/>
+										<SwipingAnimation Source="swipe">
+											<Set swipePanel.ZOffset="100"/>
+											<Move Target="swipePanel" RelativeTo="ParentSize" Easing="Linear" Y="-0.25"  Duration="0.4"/>
+										</SwipingAnimation>
+									</DockPanel>
 								</Grid>
 						</Page>
 						<Calendar_Page ux:Name="Calendar_Page"/>
@@ -235,7 +247,7 @@
 						<Set state.Active="signupFormState" />
 						<Set whiteRect.LayoutMaster="parent"/>
 					</Clicked>
-					<Rectangle Height="50" Width="100%" Color="MainColor" CornerRadius="10"><DropShadow/></Rectangle>
+					<Rectangle Height="50" Width="100%" Color="MainColor" CornerRadius="5"><DropShadow/></Rectangle>
 				</Panel>
 				<Panel ux:Name="teacher" Height="100%" HitTestMode="LocalBounds" Margin="5,10,0,0">
 					<Text Value="Teachers" Alignment="Center" Color="#FFFFFF" HitTestMode="LocalBounds" />
@@ -244,7 +256,7 @@
 						<Set whiteRect.LayoutMaster="teacher"/>
 						<Callback Handler="{option_clicked}"/>
 					</Clicked>
-					<Rectangle Height="50" Width="100%" Color="MainColor" CornerRadius="10"><DropShadow/></Rectangle>
+					<Rectangle Height="50" Width="100%" Color="MainColor" CornerRadius="5"><DropShadow/></Rectangle>
 				</Panel>
 			</Grid>
 		</StackPanel>
@@ -264,7 +276,7 @@
 			</Rectangle>
 		</Panel>
 
-		<Rectangle ux:Name="whiteRect" Color="MainColor" LayoutMaster="{clicked}" Layer="Background" CornerRadius="10"><DropShadow/></Rectangle>
+		<Rectangle ux:Name="whiteRect" Color="MainColor" LayoutMaster="{clicked}" Layer="Background" CornerRadius="5"><DropShadow/></Rectangle>
 		<Attractor ux:Name="whiteRectCornerRadiusAttractor" Target="whiteRect.CornerRadius" Value="10" Type="SmoothSnap" Unit="Points" />
 
 		<HidingPanel ux:Name="logoPanel" Alignment="Top" Height="70%" IsEnabled="true" HitTestMode="None" Layer="Background">
