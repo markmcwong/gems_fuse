@@ -1,0 +1,114 @@
+<Page ux:Class="Timetable_Page" Background="#FFF" Opacity="0">
+
+<WhileActive>
+    <Change this.Opacity="1" Duration="1"/>
+</WhileActive>
+<JavaScript>
+    var Observable = require("FuseJS/Observable");
+
+    var items = Observable([
+        { value: 25, color: "#4CD8FC", day: "Today" },
+        { value: 15, color: "#A943C1", day: "Tomorrow" },
+        { value: 30, color: "#FFCE6B", day: "Tuesday" },
+        { value: 10, color: "#EB4CAF", day: "Wednesday"},
+        { value: 20, color: "#33CB9F", day: "Thursday" }
+    ]);
+
+    var currentPage = Observable(0);
+
+    function activated(arg) {
+        currentPage.value = arg.data.index;
+    }
+
+    var defaultRotation = Observable(0);
+    module.exports = {
+        items: items.map(function(i){
+            var lastItem = {
+                startAngle: 0,
+                endAngle: 0,
+                angle: 0
+            };
+            i.forEach(function(x, c) {
+                x.index = c;
+                x.angle = ((x.value / 100) * 360);
+
+                x.startAngle = lastItem.startAngle - x.angle;
+                x.endAngle = lastItem.startAngle;
+
+                x.isActive = Observable(function(){
+                    return currentPage.value == x.index;
+                });
+
+                lastItem = x;
+
+            });
+            return i;
+        }).expand(),
+        currentPage: currentPage,
+        activated: activated,
+        defaultRotation: defaultRotation
+    };
+</JavaScript>
+
+    <Week ux:Name="Timetable_Week"/>
+    <ScrollView>
+    <PageControl ux:Name="pageControl" Transition="None" InactiveState="Disabled" Margin="0,40,0,0">
+        <Each Items="{items}">
+            <Grid ux:Name="item" Rows="50,auto">
+                <Activated>
+                    <Callback Handler="{activated}" />
+                </Activated>
+
+                <Text ux:Name="tabItem" Color="MainColor" Value="{day}" Alignment="Center" Margin="10" FontSize="24" Opacity="0.3"/>
+
+                <ScrollingAnimation From="0" To="100">
+                    <Scale Target="tabItem" Factor="0.7"/>
+                    <Move Target="arrowRect" Y="0.3" X="0.3" RelativeTo="Size" />
+                </ScrollingAnimation>
+
+                <ResourceFloat4 Key="color" Value="MainColor" />
+
+                <Panel ux:Name="mainContent" Color="#fff" Opacity="0">
+                    <StackPanel>
+                        <Each Count="15" Offset="8">
+                            <Grid Columns="100,1*">
+                                <Text FontSize="20" Alignment="Center" Value="{= index()}:00"/>
+                                <Rectangle Color="#fff" Alignment="Right" Width="100%" CornerRadius="5">
+                                    <StackPanel Margin="20" Width="100%">
+                                        <Grid Columns="50, 1*">
+                                            <Text Value="Arabic"/>
+                                            <Text Alignment="Right" Value="8:45-9:15"/>
+                                        </Grid>
+                                        <Grid Columns="70, 1*" Margin="0,10">
+                                            <Text Value="Mr ABC"/>
+                                            <Text Alignment="Right" Value="RM205" FontSize="12"/>
+                                        </Grid>
+                                    </StackPanel>
+                                    <Shadow/>
+                                </Rectangle>
+                            </Grid>
+                        </Each>
+                    </StackPanel>
+
+
+                    <Rectangle ux:Name="arrowRect" Color="MainColor" Width="25" Height="25" Alignment="Top" Layer="Background">
+                        <Translation Y="-5" />
+                        <Rotation Degrees="45" />
+                    </Rectangle>
+                </Panel>
+                <ActivatingAnimation>
+                    <Change mainContent.Opacity="1" />
+                    <Change tabItem.Opacity="1" />
+                </ActivatingAnimation>
+
+                <EnteringAnimation Scale="0.5">
+                    <Move X="-1" RelativeTo="Size"/>
+                </EnteringAnimation>
+                <ExitingAnimation Scale="0.5">
+                    <Move X="1" RelativeTo="Size"/>
+                </ExitingAnimation>
+            </Grid>
+        </Each>
+    </PageControl>
+    </ScrollView>
+</Page>

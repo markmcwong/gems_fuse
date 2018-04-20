@@ -1,0 +1,61 @@
+<Page ux:Class="Report_Page" Background="#FFF" Opacity="1">
+<WhileActive>
+    <Change this.Opacity="1" Duration="1"/>
+</WhileActive> 
+<StackPanel>
+<Panel xmlns:c="Fuse.Charting" Height="200" Alignment="Top" Margin="10,20,10,15">	
+    <JavaScript>
+        var Observable = require("FuseJS/Observable")
+
+        function Item( value, label ) {
+            this.value = value
+            this.label = label
+        }
+        var values1 = Observable(
+            new Item(70, "Term 1"),
+            new Item(80, ""),
+            new Item(85, "Term 2"),
+            new Item(90, ""),
+            new Item(84, "Term 3")
+        );
+        module.exports = {
+            values1: values1
+        }
+    </JavaScript>
+    <c:Plot >
+        <c:DataSeries Data="{values1}" />
+
+        <GridLayout Rows="1*, 20" Columns="45, 1*"/>
+        <c:PlotAxis Axis="Y" Column="0" Group="2" SkipEnds="2,0" Margin="5,0">
+            <Text ux:Template="Label" TextAlignment="Center" FontSize="15" Color="#9e9e9e" Value="{Plot axis.value}%"/>
+        </c:PlotAxis>	
+        <MyPlot Row="0" Column="1" MainColor="MainColor" BackgroundColor="MainColor" SeriesIndex="0" Margin="20,0" >
+            <c:PlotTicks Axis="Y" StrokeWidth="1" StrokeColor="#dedede" Group="2"/>
+        </MyPlot>
+        <StackPanel Row="1" Column="1" Margin="10,-5" >
+            <c:PlotAxis Axis="X">
+                <Text ux:Template="Label" TextAlignment="Center" FontSize="15" 
+                    Color="#9e9e9e" Value="{Plot axis.label}"/>
+            </c:PlotAxis>
+        </StackPanel> 
+    </c:Plot>
+</Panel>
+<Panel>
+    <StackPanel>
+    <Text FontSize="24" Value="Term 2 Exam" Margin="20,0"/>
+    <Each Count="2">
+        <Rectangle Color="#fff" Alignment="Center" Width="90%" CornerRadius="5" Margin="5">
+            <Grid Columns="40,70,1*" RowCount="2" Margin="10">
+                <Text Column="0" Row="0" RowSpan="2" FontSize="30" Value="A" Margin="10"/>
+                <Text Value="Arabic" Row="0" Column="1" Margin="5"/>
+                <Text Alignment="Right" Value="8:45-9:15" Row="0" Column="2" Margin="5"/>
+                <Text Value="Mr ABC" Column="1" Row="1" Margin="5"/>
+                <Text Alignment="Right" Value="RM205" FontSize="12" Row="1" Column="2" Margin="5"/>
+            </Grid>
+            <Shadow/>
+        </Rectangle>
+    </Each>
+</StackPanel>
+</Panel>
+</StackPanel>
+</Page>

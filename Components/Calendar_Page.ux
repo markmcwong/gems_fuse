@@ -1,12 +1,13 @@
 <Page ux:Class="Calendar_Page" Background="#FFF" Opacity="0">
     <WhileActive>
+        <Set Week.Opacity="1"/>
         <Change this.Opacity="1" Duration="1"/>
     </WhileActive>
     <!-- <Transition>					
         <Move Y="0.25" RelativeTo="ParentSize" Duration="0.5"/>
     </Transition> -->
     <StackPanel Orientation="Vertical">
-        <Week/>
+        <Week ux:Name="Week" Opacity="1"/>
         <Calendar Offset="0,10"/>
         <StackPanel Padding="25,10">
             <Grid Columns="auto,1*" Padding="-7.5,10,0,-10">

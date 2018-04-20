@@ -1,5 +1,5 @@
-<Page ux:Class="Nav_Tab">
+<Page ux:Class="Nav_Tab" Color="#2196F3">
     <string ux:Property="icon" />
     <FileImageSource ux:Key="Icon" File="{Property icon}" />
-    <Rectangle />
+    <Rectangle Fill="#2196F3" Color="#2196F3"/>
 </Page>

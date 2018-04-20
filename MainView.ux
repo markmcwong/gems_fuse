@@ -9,7 +9,7 @@
 		var values2 = Observable(["Sunday", "Monday", "Tuesday"]);
 
 		var profiles = [
-			{"name":"Homework", "colour":"#34495e"},
+			{"name":"Report", "colour":"#34495e"},
 			{"name":"Calendar", "colour":"#3498db"},
 			{"name":"Timetable", "colour":"#aa3377"},
 			{"name":"Learning Space", "colour":"#88cc22"}
@@ -101,7 +101,11 @@
 							<Nav_Tab icon="Assets/icon-settings.png"/>											
 						</PageControl>
 						<Page ux:Name="Profile">
-								<Grid Rows="auto, 1*">
+							<Rectangle Width="100%" Height="5%" Fill="#fff" Y="y(navBar)" ux:Name="greyBar" Opacity="0" Layer="Overlay">
+								<Rectangle Alignment="Center" Fill="#D3D3D3" CornerRadius="20" Height="5" Width="10%"/>
+							</Rectangle>
+							<ScrollView>
+								<StackPanel>
 									<StackPanel Orientation="Vertical" ux:Name="Card">
 										<Scrollbar/>
 										<Panel Width="90%" Margin="0,5,0,0">
@@ -174,27 +178,40 @@
 											</Rectangle>
 										</Panel>
 									</StackPanel>
-									<DockPanel Height="150%" Margin="0,15,0,0" ux:Name="swipePanel" Offset="0,25%">
+									<DockPanel Height="height(topPanel) - 25" Margin="0,15,0,0" ux:Name="swipePanel" Offset="0,25%" ZOffset="100">
 										<Rectangle Dock="Top" Fill="#D3D3D3" CornerRadius="20" Height="5" Width="10%" Margin="0,15"/>
 										<StackPanel Orientation="Vertical" Dock="Top" Alignment="Top" Margin="0,-25">
 											<Dashboard_Item first_child="50%"/>
 											<Dashboard_Item first_child="100%"/>
+											<Dashboard_Item first_child="100%"/>
+											<Dashboard_Item first_child="100%"/>
+											<Dashboard_Item first_child="100%"/>
+											<Dashboard_Item first_child="100%"/>
+											<Dashboard_Item first_child="100%"/>
+											<Dashboard_Item first_child="100%"/>
+											<Dashboard_Item first_child="100%"/>																																												
 										</StackPanel>
 										<Rectangle Color="#fff" Width="100%" Height="100%" Layer="Background"/>
 										<DropShadow Size="10"/>
-										<SwipeGesture ux:Name="swipe" Direction="Up" Length="50" Type="Active"/>
-										<SwipingAnimation Source="swipe">
-											<Set swipePanel.ZOffset="100"/>
-											<Move Target="swipePanel" RelativeTo="ParentSize" Easing="Linear" Y="-0.25"  Duration="0.4"/>
-										</SwipingAnimation>
 									</DockPanel>
-								</Grid>
+									<ScrollingAnimation From="0" To="height(Card) - 20">
+										<Change Card.Height="0" />
+										<Move Target="Card" Y="0.55" RelativeTo="Size"/>
+										<Change Card.Opacity="0" />
+									</ScrollingAnimation>
+
+									<ScrollingAnimation From="height(Card) + 10" To="height(Card) + 10 + height(swipePanel)">
+										<Set greyBar.Opacity="1"/>
+									</ScrollingAnimation>
+									<ScrollingAnimation From="height(Card) + 15" To="0">
+										<Set greyBar.Opacity="0"/>
+									</ScrollingAnimation>
+								</StackPanel>
+							</ScrollView>
 						</Page>
 						<Calendar_Page ux:Name="Calendar_Page"/>
-						<Page ux:Name="Homework_Page" Background="#FFF">
-						</Page>			
-						<Page ux:Name="Timetable_Page" Background="#FFF">
-						</Page>	
+						<Timetable_Page ux:Name="Timetable_Page"/>
+						<Report_Page ux:Name="Report_Page"/>
 					</Navigator>
 				</DockPanel>
 			</HidingPanel>
