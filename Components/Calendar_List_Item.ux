@@ -1,13 +1,14 @@
-<Grid ux:Class="Calendar_List_Item" Columns="auto,1*">
+<Grid ux:Class="Calendar_List_Item" Columns="auto,auto,1*">
     <Shadow ux:Class="HardShadow" Color="0,0,0, 0.11" Size="0" Angle="135" Distance="4" />
     <Rectangle Offset="10%,0%">
-        <Circle Alignment="Bottom" Width="15" Height="15" Color="#ffa500">
+        <Circle Alignment="Bottom" Offset="0, -15" Width="15" Height="15" Color="#ffa500">
             <HardShadow Distance="3" />
         </Circle>
-        <Rectangle Width="2" Color="#D3D3D3" Height="100%" />
+        <Rectangle Width="2" Color="#D3D3D3" Height="100%" Offset="0, -25" />
     </Rectangle>
+    <Image File="../Icons/physics.png" Width="20" Alignment="CenterRight" Margin="15,25,0,0" />
     <StackPanel Margin="15,30,0,0">
-        <Text>9:52 am</Text>
-        <Text Color="#50B3C2">1.45 miles, 17m 11s</Text>
+        <Text>Physics</Text>
+        <Text Color="#50B3C2">Worksheet 1</Text>
     </StackPanel>
 </Grid>

@@ -18,16 +18,6 @@ sealed class Gems_accessor_MyPlot_SeriesIndex: global::Uno.UX.PropertyAccessor
     public override void SetAsObject(global::Uno.UX.PropertyObject obj, object v, global::Uno.UX.IPropertyListener origin) { ((global::MyPlot)obj).SetSeriesIndex((int)v, origin); }
     public override bool SupportsOriginSetter { get { return true; } }
 }
-sealed class Gems_accessor_Date_Text: global::Uno.UX.PropertyAccessor
-{
-    public static global::Uno.UX.PropertyAccessor Singleton = new Gems_accessor_Date_Text();
-    public override global::Uno.UX.Selector Name { get { return _name; } }
-    static global::Uno.UX.Selector _name = "Text";
-    public override global::Uno.Type PropertyType { get { return typeof(string); } }
-    public override object GetAsObject(global::Uno.UX.PropertyObject obj) { return ((global::Date)obj).Text; }
-    public override void SetAsObject(global::Uno.UX.PropertyObject obj, object v, global::Uno.UX.IPropertyListener origin) { ((global::Date)obj).SetText((string)v, origin); }
-    public override bool SupportsOriginSetter { get { return true; } }
-}
 sealed class Gems_accessor_Week_TopBar_Text: global::Uno.UX.PropertyAccessor
 {
     public static global::Uno.UX.PropertyAccessor Singleton = new Gems_accessor_Week_TopBar_Text();
@@ -36,6 +26,16 @@ sealed class Gems_accessor_Week_TopBar_Text: global::Uno.UX.PropertyAccessor
     public override global::Uno.Type PropertyType { get { return typeof(string); } }
     public override object GetAsObject(global::Uno.UX.PropertyObject obj) { return ((global::Week_TopBar)obj).Text; }
     public override void SetAsObject(global::Uno.UX.PropertyObject obj, object v, global::Uno.UX.IPropertyListener origin) { ((global::Week_TopBar)obj).SetText((string)v, origin); }
+    public override bool SupportsOriginSetter { get { return true; } }
+}
+sealed class Gems_accessor_Date_Text: global::Uno.UX.PropertyAccessor
+{
+    public static global::Uno.UX.PropertyAccessor Singleton = new Gems_accessor_Date_Text();
+    public override global::Uno.UX.Selector Name { get { return _name; } }
+    static global::Uno.UX.Selector _name = "Text";
+    public override global::Uno.Type PropertyType { get { return typeof(string); } }
+    public override object GetAsObject(global::Uno.UX.PropertyObject obj) { return ((global::Date)obj).Text; }
+    public override void SetAsObject(global::Uno.UX.PropertyObject obj, object v, global::Uno.UX.IPropertyListener origin) { ((global::Date)obj).SetText((string)v, origin); }
     public override bool SupportsOriginSetter { get { return true; } }
 }
 sealed class Gems_accessor_Dashboard_Item_first_child: global::Uno.UX.PropertyAccessor
@@ -56,16 +56,6 @@ sealed class Gems_accessor_Fuse_Controls_ToggleControl_Value: global::Uno.UX.Pro
     public override global::Uno.Type PropertyType { get { return typeof(bool); } }
     public override object GetAsObject(global::Uno.UX.PropertyObject obj) { return ((global::Fuse.Controls.ToggleControl)obj).Value; }
     public override void SetAsObject(global::Uno.UX.PropertyObject obj, object v, global::Uno.UX.IPropertyListener origin) { ((global::Fuse.Controls.ToggleControl)obj).SetValue((bool)v, origin); }
-    public override bool SupportsOriginSetter { get { return true; } }
-}
-sealed class Gems_accessor_Nav_Tab_icon: global::Uno.UX.PropertyAccessor
-{
-    public static global::Uno.UX.PropertyAccessor Singleton = new Gems_accessor_Nav_Tab_icon();
-    public override global::Uno.UX.Selector Name { get { return _name; } }
-    static global::Uno.UX.Selector _name = "icon";
-    public override global::Uno.Type PropertyType { get { return typeof(string); } }
-    public override object GetAsObject(global::Uno.UX.PropertyObject obj) { return ((global::Nav_Tab)obj).icon; }
-    public override void SetAsObject(global::Uno.UX.PropertyObject obj, object v, global::Uno.UX.IPropertyListener origin) { ((global::Nav_Tab)obj).Seticon((string)v, origin); }
     public override bool SupportsOriginSetter { get { return true; } }
 }
 sealed class Gems_FuseElementsElement_Opacity_Property: Uno.UX.Property<float>
@@ -111,30 +101,29 @@ sealed class Gems_FuseControlsTextControl_Value_Property: Uno.UX.Property<string
     public override void Set(global::Uno.UX.PropertyObject obj, string v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Controls.TextControl)obj).SetValue(v, origin); }
     public override bool SupportsOriginSetter { get { return true; } }
 }
-sealed class Gems_FuseNavigationNavigateTo_Target_Property: Uno.UX.Property<Fuse.Visual>
+sealed class Gems_FuseReactiveEach_Items_Property: Uno.UX.Property<object>
 {
-    [Uno.WeakReference] readonly Fuse.Navigation.NavigateTo _obj;
-    public Gems_FuseNavigationNavigateTo_Target_Property(Fuse.Navigation.NavigateTo obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
+    [Uno.WeakReference] readonly Fuse.Reactive.Each _obj;
+    public Gems_FuseReactiveEach_Items_Property(Fuse.Reactive.Each obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
     public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
-    public override Fuse.Visual Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Navigation.NavigateTo)obj).Target; }
-    public override void Set(global::Uno.UX.PropertyObject obj, Fuse.Visual v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Navigation.NavigateTo)obj).Target = v; }
+    public override object Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Reactive.Each)obj).Items; }
+    public override void Set(global::Uno.UX.PropertyObject obj, object v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Reactive.Each)obj).Items = v; }
 }
-sealed class Gems_FuseControlsImage_Source_Property: Uno.UX.Property<Fuse.Resources.ImageSource>
+sealed class Gems_FuseControlsImage_File_Property: Uno.UX.Property<Uno.UX.FileSource>
 {
     [Uno.WeakReference] readonly Fuse.Controls.Image _obj;
-    public Gems_FuseControlsImage_Source_Property(Fuse.Controls.Image obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
+    public Gems_FuseControlsImage_File_Property(Fuse.Controls.Image obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
     public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
-    public override Fuse.Resources.ImageSource Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Controls.Image)obj).Source; }
-    public override void Set(global::Uno.UX.PropertyObject obj, Fuse.Resources.ImageSource v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Controls.Image)obj).Source = v; }
+    public override Uno.UX.FileSource Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Controls.Image)obj).File; }
+    public override void Set(global::Uno.UX.PropertyObject obj, Uno.UX.FileSource v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Controls.Image)obj).File = v; }
 }
-sealed class Gems_FuseControlsShape_Color_Property: Uno.UX.Property<float4>
+sealed class Gems_FuseElementsElement_Y_Property: Uno.UX.Property<Uno.UX.Size>
 {
-    [Uno.WeakReference] readonly Fuse.Controls.Shape _obj;
-    public Gems_FuseControlsShape_Color_Property(Fuse.Controls.Shape obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
+    [Uno.WeakReference] readonly Fuse.Elements.Element _obj;
+    public Gems_FuseElementsElement_Y_Property(Fuse.Elements.Element obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
     public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
-    public override float4 Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Controls.Shape)obj).Color; }
-    public override void Set(global::Uno.UX.PropertyObject obj, float4 v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Controls.Shape)obj).SetColor(v, origin); }
-    public override bool SupportsOriginSetter { get { return true; } }
+    public override Uno.UX.Size Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Elements.Element)obj).Y; }
+    public override void Set(global::Uno.UX.PropertyObject obj, Uno.UX.Size v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Elements.Element)obj).Y = v; }
 }
 sealed class Gems_FuseControlsShape_StrokeColor_Property: Uno.UX.Property<float4>
 {
@@ -152,6 +141,15 @@ sealed class Gems_FuseChartingPlotData_SeriesIndex_Property: Uno.UX.Property<int
     public override int Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Charting.PlotData)obj).SeriesIndex; }
     public override void Set(global::Uno.UX.PropertyObject obj, int v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Charting.PlotData)obj).SeriesIndex = v; }
 }
+sealed class Gems_FuseControlsShape_Color_Property: Uno.UX.Property<float4>
+{
+    [Uno.WeakReference] readonly Fuse.Controls.Shape _obj;
+    public Gems_FuseControlsShape_Color_Property(Fuse.Controls.Shape obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
+    public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
+    public override float4 Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Controls.Shape)obj).Color; }
+    public override void Set(global::Uno.UX.PropertyObject obj, float4 v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Controls.Shape)obj).SetColor(v, origin); }
+    public override bool SupportsOriginSetter { get { return true; } }
+}
 sealed class Gems_FuseChartingDataSeries_Data_Property: Uno.UX.Property<Fuse.IArray>
 {
     [Uno.WeakReference] readonly Fuse.Charting.DataSeries _obj;
@@ -160,13 +158,29 @@ sealed class Gems_FuseChartingDataSeries_Data_Property: Uno.UX.Property<Fuse.IAr
     public override Fuse.IArray Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Charting.DataSeries)obj).Data; }
     public override void Set(global::Uno.UX.PropertyObject obj, Fuse.IArray v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Charting.DataSeries)obj).Data = v; }
 }
-sealed class Gems_FuseVisual_ZOffset_Property: Uno.UX.Property<float>
+sealed class Gems_FuseElementsElement_Height_Property: Uno.UX.Property<Uno.UX.Size>
 {
-    [Uno.WeakReference] readonly Fuse.Visual _obj;
-    public Gems_FuseVisual_ZOffset_Property(Fuse.Visual obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
+    [Uno.WeakReference] readonly Fuse.Elements.Element _obj;
+    public Gems_FuseElementsElement_Height_Property(Fuse.Elements.Element obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
     public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
-    public override float Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Visual)obj).ZOffset; }
-    public override void Set(global::Uno.UX.PropertyObject obj, float v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Visual)obj).ZOffset = v; }
+    public override Uno.UX.Size Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Elements.Element)obj).Height; }
+    public override void Set(global::Uno.UX.PropertyObject obj, Uno.UX.Size v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Elements.Element)obj).Height = v; }
+}
+sealed class Gems_FuseTriggersScrollingAnimation_To_Property: Uno.UX.Property<float>
+{
+    [Uno.WeakReference] readonly Fuse.Triggers.ScrollingAnimation _obj;
+    public Gems_FuseTriggersScrollingAnimation_To_Property(Fuse.Triggers.ScrollingAnimation obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
+    public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
+    public override float Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Triggers.ScrollingAnimation)obj).To; }
+    public override void Set(global::Uno.UX.PropertyObject obj, float v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Triggers.ScrollingAnimation)obj).To = v; }
+}
+sealed class Gems_FuseTriggersScrollingAnimation_From_Property: Uno.UX.Property<float>
+{
+    [Uno.WeakReference] readonly Fuse.Triggers.ScrollingAnimation _obj;
+    public Gems_FuseTriggersScrollingAnimation_From_Property(Fuse.Triggers.ScrollingAnimation obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
+    public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
+    public override float Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Triggers.ScrollingAnimation)obj).From; }
+    public override void Set(global::Uno.UX.PropertyObject obj, float v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Triggers.ScrollingAnimation)obj).From = v; }
 }
 sealed class Gems_FuseElementsElement_ElementLayoutMaster_Property: Uno.UX.Property<Fuse.Elements.Element>
 {
@@ -250,13 +264,13 @@ sealed class Gems_FuseReactiveMatch_Value_Property: Uno.UX.Property<object>
     public override object Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Reactive.Match)obj).Value; }
     public override void Set(global::Uno.UX.PropertyObject obj, object v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Reactive.Match)obj).Value = v; }
 }
-sealed class Gems_Date_Text_Property: Uno.UX.Property<string>
+sealed class Gems_Week_TopBar_Text_Property: Uno.UX.Property<string>
 {
-    [Uno.WeakReference] readonly Date _obj;
-    public Gems_Date_Text_Property(Date obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
+    [Uno.WeakReference] readonly Week_TopBar _obj;
+    public Gems_Week_TopBar_Text_Property(Week_TopBar obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
     public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
-    public override string Get(global::Uno.UX.PropertyObject obj) { return ((Date)obj).Text; }
-    public override void Set(global::Uno.UX.PropertyObject obj, string v, global::Uno.UX.IPropertyListener origin) { ((Date)obj).SetText(v, origin); }
+    public override string Get(global::Uno.UX.PropertyObject obj) { return ((Week_TopBar)obj).Text; }
+    public override void Set(global::Uno.UX.PropertyObject obj, string v, global::Uno.UX.IPropertyListener origin) { ((Week_TopBar)obj).SetText(v, origin); }
     public override bool SupportsOriginSetter { get { return true; } }
 }
 sealed class Gems_FuseElementsElement_Width_Property: Uno.UX.Property<Uno.UX.Size>
@@ -267,30 +281,14 @@ sealed class Gems_FuseElementsElement_Width_Property: Uno.UX.Property<Uno.UX.Siz
     public override Uno.UX.Size Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Elements.Element)obj).Width; }
     public override void Set(global::Uno.UX.PropertyObject obj, Uno.UX.Size v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Elements.Element)obj).Width = v; }
 }
-sealed class Gems_Week_TopBar_Text_Property: Uno.UX.Property<string>
+sealed class Gems_Date_Text_Property: Uno.UX.Property<string>
 {
-    [Uno.WeakReference] readonly Week_TopBar _obj;
-    public Gems_Week_TopBar_Text_Property(Week_TopBar obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
+    [Uno.WeakReference] readonly Date _obj;
+    public Gems_Date_Text_Property(Date obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
     public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
-    public override string Get(global::Uno.UX.PropertyObject obj) { return ((Week_TopBar)obj).Text; }
-    public override void Set(global::Uno.UX.PropertyObject obj, string v, global::Uno.UX.IPropertyListener origin) { ((Week_TopBar)obj).SetText(v, origin); }
+    public override string Get(global::Uno.UX.PropertyObject obj) { return ((Date)obj).Text; }
+    public override void Set(global::Uno.UX.PropertyObject obj, string v, global::Uno.UX.IPropertyListener origin) { ((Date)obj).SetText(v, origin); }
     public override bool SupportsOriginSetter { get { return true; } }
-}
-sealed class Gems_FuseElementsElement_Height_Property: Uno.UX.Property<Uno.UX.Size>
-{
-    [Uno.WeakReference] readonly Fuse.Elements.Element _obj;
-    public Gems_FuseElementsElement_Height_Property(Fuse.Elements.Element obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
-    public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
-    public override Uno.UX.Size Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Elements.Element)obj).Height; }
-    public override void Set(global::Uno.UX.PropertyObject obj, Uno.UX.Size v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Elements.Element)obj).Height = v; }
-}
-sealed class Gems_FuseReactiveEach_Items_Property: Uno.UX.Property<object>
-{
-    [Uno.WeakReference] readonly Fuse.Reactive.Each _obj;
-    public Gems_FuseReactiveEach_Items_Property(Fuse.Reactive.Each obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
-    public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
-    public override object Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Reactive.Each)obj).Items; }
-    public override void Set(global::Uno.UX.PropertyObject obj, object v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Reactive.Each)obj).Items = v; }
 }
 sealed class Gems_FuseResourcesFileImageSource_File_Property: Uno.UX.Property<Uno.UX.FileSource>
 {

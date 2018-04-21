@@ -66,7 +66,7 @@ public partial class Dashboard_Item: Fuse.Controls.Grid
         temp8.Alignment = Fuse.Elements.Alignment.Center;
         temp8.Margin = float4(5f, 0f, 5f, 0f);
         temp8.Offset = new Uno.UX.Size2(new Uno.UX.Size(5f, Uno.UX.Unit.Unspecified), new Uno.UX.Size(35f, Uno.UX.Unit.Percent));
-        temp8.File = new global::Uno.UX.BundleFileSource(import("../../../Icons/physics.png"));
+        temp8.File = new global::Uno.UX.BundleFileSource(import("../../Icons/physics.png"));
         temp9.Margin = float4(15f, 30f, 0f, 0f);
         temp9.Offset = new Uno.UX.Size2(new Uno.UX.Size(0f, Uno.UX.Unit.Unspecified), new Uno.UX.Size(30f, Uno.UX.Unit.Percent));
         temp9.Children.Add(temp10);

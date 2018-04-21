@@ -62,11 +62,12 @@ public partial class Week_TopBar: Fuse.Controls.DockPanel
         }
         public override object New()
         {
-            var __self = new global::Fuse.Controls.Circle();
+            var __self = new global::Fuse.Controls.Rectangle();
             var temp = new global::Fuse.Drawing.StaticSolidColor(float4(1f, 0.6470588f, 0f, 1f));
+            __self.CornerRadius = float4(15f, 15f, 15f, 15f);
             __self.Width = new Uno.UX.Size(30f, Uno.UX.Unit.Unspecified);
-            __self.Height = new Uno.UX.Size(30f, Uno.UX.Unit.Unspecified);
-            __self.Offset = new Uno.UX.Size2(new Uno.UX.Size(0f, Uno.UX.Unit.Unspecified), new Uno.UX.Size(-10f, Uno.UX.Unit.Unspecified));
+            __self.Height = new Uno.UX.Size(5f, Uno.UX.Unit.Unspecified);
+            __self.Offset = new Uno.UX.Size2(new Uno.UX.Size(0f, Uno.UX.Unit.Unspecified), new Uno.UX.Size(10f, Uno.UX.Unit.Unspecified));
             __self.Layer = Fuse.Layer.Background;
             __self.Fill = temp;
             return __self;
@@ -94,7 +95,7 @@ public partial class Week_TopBar: Fuse.Controls.DockPanel
             var temp1 = new global::Fuse.Reactive.Property(temp, Gems_accessor_Week_TopBar_Text.Singleton);
             var temp2 = new global::Fuse.Reactive.DataBinding(__self_Value_inst, temp1, Fuse.Reactive.BindingMode.Default);
             __self.TextAlignment = Fuse.Controls.TextAlignment.Right;
-            __self.TextColor = float4(0.05882353f, 0.05882353f, 0.05882353f, 1f);
+            __self.TextColor = float4(1f, 1f, 1f, 1f);
             __self.Alignment = Fuse.Elements.Alignment.Center;
             __self.Padding = float4(0f, 10f, 0f, 10f);
             global::Fuse.Controls.DockPanel.SetDock(__self, Fuse.Layouts.Dock.Top);
@@ -124,21 +125,18 @@ public partial class Week_TopBar: Fuse.Controls.DockPanel
         var temp6 = new global::Fuse.Reactive.Case();
         var temp7 = new Template2(this, this);
         var temp8 = new global::Fuse.Reactive.DataBinding(temp_Value_inst, temp2, Fuse.Reactive.BindingMode.Default);
-        var temp9 = new global::Fuse.Controls.Rectangle();
-        this.Padding = float4(0f, 10f, 0f, 10f);
+        this.Color = float4(0.1294118f, 0.5882353f, 0.9529412f, 1f);
+        this.Padding = float4(0f, 0f, 0f, 0f);
         temp.Cases.Add(temp3);
         temp.Cases.Add(temp6);
         temp.Bindings.Add(temp8);
-        temp3.String = "3";
+        temp3.String = "W";
         temp3.Factories.Add(temp4);
         temp3.Factories.Add(temp5);
         temp6.String = "1000";
         temp6.IsDefault = true;
         temp6.Factories.Add(temp7);
-        temp9.Color = float4(0.827451f, 0.827451f, 0.827451f, 1f);
-        temp9.Height = new Uno.UX.Size(1f, Uno.UX.Unit.Unspecified);
         this.Children.Add(temp);
-        this.Children.Add(temp9);
     }
     static global::Uno.UX.Selector __selector0 = "Value";
 }

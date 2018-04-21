@@ -17,9 +17,10 @@
                         <Rectangle CornerRadius="20" Color="#ffa500" Height="100%" Width="height(a)">
                             <Text Value="2" Alignment="Center" TextColor="#FFF"/>
                         </Rectangle>
-                        <Text Value="Events" Color="#708090" Alignment="Center" Margin="10,8,15,8" TextAlignment="Center" FontSize="16"/>
+                        <Text Value="Today" Color="#708090" Alignment="Center" Margin="10,8,15,8" TextAlignment="Center" FontSize="16"/>
                     </StackPanel>
                 </Button>
+                <Text Value="13-3-2017" FontSize="14" Alignment="Right" Margin="0,7,0,0"/>
             </Grid>
             <Calendar_List_Item/>
             <Calendar_List_Item/>

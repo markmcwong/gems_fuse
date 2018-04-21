@@ -35,7 +35,7 @@ public partial class CheckBox: Fuse.Controls.ToggleControl
         _toggledBox.Margin = float4(4f, 4f, 4f, 4f);
         _toggledBox.Opacity = 0f;
         _toggledBox.Name = __selector2;
-        _toggledBox.File = new global::Uno.UX.BundleFileSource(import("../../../Icons/check.png"));
+        _toggledBox.File = new global::Uno.UX.BundleFileSource(import("../../Icons/check.png"));
         temp.Animators.Add(temp3);
         temp.Bindings.Add(temp4);
         temp3.Value = 1f;

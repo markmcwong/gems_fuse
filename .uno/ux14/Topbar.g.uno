@@ -2,7 +2,7 @@
 public partial class Topbar: Fuse.Controls.StackPanel
 {
     global::Uno.UX.Property<string> temp_Value_inst;
-    internal global::Fuse.Reactive.EventBinding temp_eb3;
+    internal global::Fuse.Reactive.EventBinding temp_eb5;
     static Topbar()
     {
     }
@@ -24,7 +24,7 @@ public partial class Topbar: Fuse.Controls.StackPanel
         var temp7 = new global::Fuse.Gestures.Clicked();
         var temp8 = new global::Fuse.Navigation.GoBack();
         var temp9 = new global::Fuse.Triggers.Actions.Callback();
-        temp_eb3 = new global::Fuse.Reactive.EventBinding(temp1);
+        temp_eb5 = new global::Fuse.Reactive.EventBinding(temp1);
         var temp10 = new global::Fuse.Triggers.AddingAnimation();
         var temp11 = new global::Fuse.Animations.Move();
         var temp12 = new global::Fuse.Triggers.RemovingAnimation();
@@ -54,8 +54,8 @@ public partial class Topbar: Fuse.Controls.StackPanel
         temp6.Children.Add(temp14);
         temp7.Actions.Add(temp8);
         temp7.Actions.Add(temp9);
-        temp7.Bindings.Add(temp_eb3);
-        temp9.Handler += temp_eb3.OnEvent;
+        temp7.Bindings.Add(temp_eb5);
+        temp9.Handler += temp_eb5.OnEvent;
         temp10.Animators.Add(temp11);
         temp11.X = -3f;
         temp11.Duration = 0.8;
@@ -68,14 +68,14 @@ public partial class Topbar: Fuse.Controls.StackPanel
         temp13.Easing = Fuse.Animations.Easing.CubicOut;
         temp14.Height = new Uno.UX.Size(60f, Uno.UX.Unit.Percent);
         temp14.Alignment = Fuse.Elements.Alignment.Center;
-        temp14.File = new global::Uno.UX.BundleFileSource(import("../../../Assets/icon-back.png"));
+        temp14.File = new global::Uno.UX.BundleFileSource(import("../../Assets/icon-back.png"));
         temp.FontSize = 20f;
         temp.Color = float4(1f, 1f, 1f, 1f);
         temp.Alignment = Fuse.Elements.Alignment.Center;
         temp.Bindings.Add(temp15);
         temp16.Alignment = Fuse.Elements.Alignment.CenterRight;
         temp16.Margin = float4(16f, 16f, 16f, 16f);
-        temp16.File = new global::Uno.UX.BundleFileSource(import("../../../Assets/icon-hexagon.png"));
+        temp16.File = new global::Uno.UX.BundleFileSource(import("../../Assets/icon-hexagon.png"));
         this.Children.Add(temp3);
     }
     static global::Uno.UX.Selector __selector0 = "Value";

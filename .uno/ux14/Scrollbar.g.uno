@@ -17,7 +17,7 @@ public partial class Scrollbar: Fuse.Controls.ScrollView
         public override object New()
         {
             var __self = new global::Scrollbar_Buttons();
-            __self.Padding = float4(10f, 10f, 10f, 10f);
+            __self.Padding = float4(5f, 10f, 5f, 10f);
             return __self;
         }
     }

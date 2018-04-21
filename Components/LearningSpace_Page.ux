@@ -1,0 +1,42 @@
+<Page ux:Class="LearningSpace_Page" Background="#FFF">
+    <StackPanel Orientation="Vertical" Offset="0,10">
+        <Card Margin="0,5,0,0">
+            <ScrollView AllowedScrollDirections="Horizontal" Offset="15,50" Margin="0,0,25,60">		
+                <StackPanel Orientation="Horizontal">
+                    <Each Items="{profiles}">
+                        <Scrollbar_Buttons Padding="5,10"/>
+                    </Each>
+                </StackPanel>
+            </ScrollView>
+            <Text Value="Your Classes" FontSize="24" Margin="20,15,10,10"/>
+        </Card>
+        <Card>
+            <StackPanel>
+                <Grid Columns="auto,1*">
+                    <Text Value="Your Workbook" FontSize="24" Margin="20,15,10,10"/>
+                    <Text Value="Show more" Alignment="BottomRight" Margin="15"/>
+                </Grid>
+                <Text Value="Currently you do not have any messages" Alignment="Center" Margin="0,20"/>
+            </StackPanel>
+        </Card>
+        <Card>
+            <StackPanel>
+                <Grid Columns="auto,1*">
+                    <Text Value="Your Files" FontSize="24" Margin="20,15,10,10"/>
+                    <Text Value="Show more" Alignment="BottomRight" Margin="15"/>
+                </Grid>
+                <StackPanel Orientation="Horizontal" Margin="20,0,10,10">
+                    <Grid Rows="60,40">
+                        <Image File="../Icons/physics.png" Width="60" Height="60"/>
+                        <Text Value="Chemistry Lesson1" FontSize="11" TextWrapping="Wrap" Width="55" Offset="2.5,0"  Margin="0,10" Height="40"/>
+                    </Grid>
+                    <Grid Rows="60,40" Margin="10,0">
+                        <Image File="../Icons/physics.png" Width="60" Height="60"/>
+                        <Text Value="Chemistry
+                        WS" FontSize="11" TextWrapping="Wrap" Width="55" Offset="2.5,0" Margin="0,10" Height="40"/>
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+        </Card>
+    </StackPanel>
+</Page>

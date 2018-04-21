@@ -6,20 +6,36 @@
 	<JavaScript>
 		var Observable = require("FuseJS/Observable");
 		var clicked = Observable("signupButton");
+		var menu = Observable("Visible");
 		var values2 = Observable(["Sunday", "Monday", "Tuesday"]);
-
+		var pages = [
+			{"page":"Profile", "highlight":"#34495e", "icon":"Icons/physics.png"},
+			{"page":"Notifications", "highlight":"#3498db", "icon":"Assets/icon-bell.png"},
+			{"page":"LearningSpace", "highlight":"#aa3377", "icon":"Assets/icon-book.png"},
+			{"page":"Settings", "highlight":"#88cc22", "icon":"Assets/icon-settings.png"}
+		];
 		var profiles = [
-			{"name":"Report", "colour":"#34495e"},
-			{"name":"Calendar", "colour":"#3498db"},
-			{"name":"Timetable", "colour":"#aa3377"},
-			{"name":"Learning Space", "colour":"#88cc22"}
+			{"page":"Report", "colour":"#34495e"},
+			{"page":"Calendar", "colour":"#3498db"},
+			{"page":"Timetable", "colour":"#aa3377"},
+			{"page":"Learning Space", "colour":"#88cc22"}
 		];
 
 		var topbar_title = Observable("Home")
 		var original = Observable("Home")
         var option_clicked = function(args){
-			router.push(args.data.name+"_Page");
-			change_title(args.data.name)
+			console.log(args.data.page)
+			change_title(args.data.page)
+			if (args.data.page == "Learning Space" || args.data.page ==  "LearningSpace" || args.data.page ==  "Profile" || args.data.page ==  "Settings" || args.data.page ==  "Notifications"){
+				if (args.data.page == "Learning Space" || args.data.page ==  "LearningSpace"){
+					router.goto("LearningSpace_Page");		
+					menu = "Visible";	
+				}else{
+					router.goto(args.data.page+"_Page");		
+				}
+			}else{
+				router.push(args.data.page+"_Page");
+			}
         }
 		var change_title = function(args){
 			if(args.node){
@@ -30,13 +46,19 @@
 				topbar_title.value = args				
 			}
 		}
+		function logged(e){
+			console.log(JSON.stringify(e))
+		}
 		module.exports = {
 			profiles: profiles,
 			option_clicked: option_clicked,
 			topbar_title: topbar_title,
 			change_title: change_title,
 			clicked: clicked,
-			values2: values2
+			values2: values2,
+			logged: logged,
+			pages: pages,
+			menu: menu
 		};
 	
 	</JavaScript>
@@ -63,7 +85,7 @@
 						</Panel>
 						<Set menu.Visibility="Hidden"/>
 					</WhileCanGoBack>
-					<Panel HitTestMode="LocalBoundsAndChildren" ux:Name="menu">
+					<Panel HitTestMode="LocalBoundsAndChildren" ux:Name="menu" Visibility="{menu}">
 						<Image File="Icons/menu.png" Width="30" Height="30" />
 						<Clicked>
 							<Scale Factor="0.8" Duration=".15" Easing="CubicInOut" />
@@ -78,29 +100,22 @@
 				<DockPanel>
 					<!-- <StatusBarBackground Dock="Top" /> -->
 					<!-- <BottomBarBackground Dock="Bottom"/> -->
-					<PageIndicator Dock="Bottom" Height="45" Navigation="pages" Background="#000">
-						<GridLayout ColumnCount="4" />
-						<Panel ux:Template="Dot" Height="45">
-							<!-- <ActivatingAnimation>
-								<Scale Target="icon" Factor="1.5" />
-							</ActivatingAnimation> -->
-							<Clicked>
-								<NavigateTo Target="{Page Visual}"/>
-							</Clicked>
-							<Panel ux:Name="icon" Padding="10">
-								<Image Source="{Page Icon}" />
-							</Panel>
-							<Rectangle Color="{Page Highlight}" />
-						</Panel>
-					</PageIndicator>
-					<Navigator DefaultPath="Profile">
-						<PageControl ux:Name="pages" Padding="0,5" Background="#FFF">
-							<Nav_Tab icon="Assets/icon-profile.png"/>
-							<Nav_Tab icon="Assets/icon-bell.png"/>
-							<Nav_Tab icon="Assets/icon-book.png"/>
-							<Nav_Tab icon="Assets/icon-settings.png"/>											
-						</PageControl>
-						<Page ux:Name="Profile">
+					<Panel Dock="Bottom" Height="45">
+						<Grid ColumnCount="4">
+							<Each Items="{pages}">
+								<Panel Height="45" ux:Name="test" Clicked="{option_clicked}" ZOffset="10" Background="#333">								
+									<ActivatingAnimation>
+										<Scale Target="icon" Factor="1.5" />
+									</ActivatingAnimation>
+									<Panel ux:Name="icon" Padding="0" Height="25" Width="25">
+										<Image File="{icon}"/>
+									</Panel>
+								</Panel>
+							</Each>
+						</Grid>
+					</Panel>
+					<Navigator DefaultPath="Profile_Page">
+						<Page ux:Name="Profile_Page">
 							<Rectangle Width="100%" Height="5%" Fill="#fff" Y="y(navBar)" ux:Name="greyBar" Opacity="0" Layer="Overlay">
 								<Rectangle Alignment="Center" Fill="#D3D3D3" CornerRadius="20" Height="5" Width="10%"/>
 							</Rectangle>
@@ -212,6 +227,8 @@
 						<Calendar_Page ux:Name="Calendar_Page"/>
 						<Timetable_Page ux:Name="Timetable_Page"/>
 						<Report_Page ux:Name="Report_Page"/>
+						<Notifications_Page ux:Name="Notifications_Page"/>									
+						<LearningSpace_Page ux:Name="LearningSpace_Page"/>
 					</Navigator>
 				</DockPanel>
 			</HidingPanel>

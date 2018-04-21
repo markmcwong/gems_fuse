@@ -73,7 +73,7 @@
                         <Each Count="15" Offset="8">
                             <Grid Columns="100,1*">
                                 <Text FontSize="20" Alignment="Center" Value="{= index()}:00"/>
-                                <Rectangle Color="#fff" Alignment="Right" Width="100%" CornerRadius="5">
+                                <Rectangle Color="#fff" Alignment="Right" Margin="0,10,10,0" Width="100%" CornerRadius="5">
                                     <StackPanel Margin="20" Width="100%">
                                         <Grid Columns="50, 1*">
                                             <Text Value="Arabic"/>

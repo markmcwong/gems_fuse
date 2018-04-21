@@ -4,7 +4,7 @@
         <Callback Handler="{option_clicked}"/>
     </Clicked>
     <Panel>
-        <Text Value="{name}" Color="#FFF" Alignment="Center" Margin="15,8,15,8" TextAlignment="Center" FontSize="16"/>
-        <Rectangle CornerRadius="4" Layer="Background" Color="{colour}"/>
+        <Text Value="{page}" Color="#FFF" Alignment="Center" Margin="20,8,20,8" TextAlignment="Center" FontSize="16"/>
+        <Rectangle CornerRadius="15" Layer="Background" Color="{colour}"/>
     </Panel>
 </Button>

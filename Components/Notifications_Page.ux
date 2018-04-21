@@ -1,0 +1,47 @@
+<Page ux:Class="Notifications_Page" Background="#FFF">
+    <StackPanel Orientation="Vertical" Offset="0,0">
+        <Card>
+            <StackPanel>
+                <Grid Columns="auto,1*">
+                    <Text Value="School News" FontSize="24" Margin="20,15,10,10"/>
+                    <Text Value=">" Alignment="BottomRight" Margin="15"/>
+                </Grid>
+                <StackPanel>
+                    <Grid Columns="auto,1*">
+                        <Text Value="World Book Day" FontSize="18" Margin="20,15,10,10"/>
+                        <Text Value="25/2/2018" FontSize="14" Alignment="BottomRight" Margin="20"/>
+                    </Grid>
+                    <Text LineSpacing="2" Alignment="Left" FontSize="14" Margin="20,-10,0,10">Gems Cambridge InternationalGems Cambridge InternationalGems Cambridge InternationalGems 
+Cambridge InternationalGems Cambridge InternationalGems Cambridge International" </Text>
+                </StackPanel>
+                <Rectangle Color="#0e0e0e" Opacity="0.1" Width="90%" Height="2"/>
+                <StackPanel Offset="0,-5">
+                    <Grid Columns="auto,1*">
+                        <Text Value="World Book Day" FontSize="18" Margin="20,15,10,10"/>
+                        <Text Value="25/2/2018" FontSize="14" Alignment="BottomRight" Margin="20"/>
+                    </Grid>
+                    <Text LineSpacing="2" Alignment="Left" FontSize="14" Margin="20,-10,0,10">Gems Cambridge InternationalGems Cambridge InternationalGems Cambridge InternationalGems 
+Cambridge InternationalGems Cambridge InternationalGems Cambridge International" </Text>
+                </StackPanel>
+            </StackPanel>
+        </Card>
+        <Card>
+            <StackPanel>
+                <Grid Columns="auto,1*">
+                    <Text Value="Notices" FontSize="24" Margin="20,15,10,10"/>
+                    <Text Value=">" FontSize="14" Alignment="BottomRight" Margin="20"/>
+                </Grid>
+                <Text Value="Currently you do not have any messages" Alignment="Center" Margin="0,20"/>
+            </StackPanel>
+        </Card>
+        <Card>
+            <StackPanel>
+                <Grid Columns="auto,1*">
+                    <Text Value="Messages" FontSize="24" Margin="20,15,10,10"/>
+                    <Text Value=">" FontSize="14" Alignment="BottomRight" Margin="20"/>
+                </Grid>
+                <Text Value="Currently you do not have any messages" Alignment="Center" Margin="0,20"/>
+            </StackPanel>
+        </Card>
+    </StackPanel>
+</Page>

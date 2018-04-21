@@ -1,0 +1,5 @@
+<Panel Width="90%" Margin="0,20,0,0" ux:Class="Card">
+    <Rectangle Color="#fff" Layer="Background" CornerRadius="5">
+        <Shadow Size="5" Distance="0"/>
+    </Rectangle>
+</Panel>
